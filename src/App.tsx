@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import Home from "./Home";
-import Calculator from "./Calculator";
-//import Cards from "./Cards";
+import Home from "./Home.tsx";
+import Calculator from "./Calculator.tsx";
+import Cards from "./Cards.tsx";
 
 function App() {
   const [showSum, setShowSum] = useState(false);
