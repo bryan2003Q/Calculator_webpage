@@ -61,47 +61,48 @@ function Calculator({ onReturn }) {
             setInput("Error");
         }
     };  */
-    // Clase común para todos los botones para no repetir código
-    const btnStyle = "p-4 text-xl font-bold rounded-lg transition-colors duration-200 shadow-sm";
+    // Clase común para todos los botones
+    const btnStyle = "p-4 text-xl font-bold rounded";
+
     return (
-        <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-4 font-sans">
-            <div className="bg-white p-6 rounded-3xl shadow-2xl w-full max-w-xs border border-slate-200">
-                <h2 className="text-2xl font-bold text-slate-800 mb-4 text-center">Calculator</h2>
+        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+            <div className="bg-white p-6 rounded-xl w-full max-w-xs">
+                <h2 className="text-2xl font-bold text-center mb-4">Calculator</h2>
                 {/* PANTALLA */}
-                <div className="bg-slate-800 text-white text-right p-5 rounded-xl text-3xl font-mono mb-6 shadow-inner overflow-hidden">
+                <div className="bg-gray-800 text-white text-right p-4 rounded text-3xl mb-4">
                     {input}
                 </div>
                 {/* GRILLA DE BOTONES (4 columnas) */}
-                <div className="grid grid-cols-4 gap-3">
+                <div className="grid grid-cols-4 gap-2">
                     {/* Fila 1 */}
-                    <button onClick={clear} className={`${btnStyle} col-span-2 bg-red-500 text-white hover:bg-red-600`}>AC</button>
-                    <button onClick={deleteDigit} className={`${btnStyle} bg-amber-500 text-white hover:bg-amber-600`}>DEL</button>
-                    <button onClick={() => addOperator('/')} className={`${btnStyle} bg-orange-400 text-white hover:bg-orange-500`}>/</button>
+                    <button onClick={clear} className={`${btnStyle} col-span-2 bg-red-500 text-white`}>AC</button>
+                    <button onClick={deleteDigit} className={`${btnStyle} bg-yellow-500 text-white`}>DEL</button>
+                    <button onClick={() => addOperator('/')} className={`${btnStyle} bg-orange-400 text-white`}>/</button>
                     {/* Fila 2 */}
-                    <button onClick={() => inputDigit('7')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>7</button>
-                    <button onClick={() => inputDigit('8')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>8</button>
-                    <button onClick={() => inputDigit('9')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>9</button>
-                    <button onClick={() => addOperator('*')} className={`${btnStyle} bg-orange-400 text-white hover:bg-orange-500`}>*</button>
+                    <button onClick={() => inputDigit('7')} className={`${btnStyle} bg-gray-200`}>7</button>
+                    <button onClick={() => inputDigit('8')} className={`${btnStyle} bg-gray-200`}>8</button>
+                    <button onClick={() => inputDigit('9')} className={`${btnStyle} bg-gray-200`}>9</button>
+                    <button onClick={() => addOperator('*')} className={`${btnStyle} bg-orange-400 text-white`}>*</button>
                     {/* Fila 3 */}
-                    <button onClick={() => inputDigit('4')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>4</button>
-                    <button onClick={() => inputDigit('5')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>5</button>
-                    <button onClick={() => inputDigit('6')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>6</button>
-                    <button onClick={() => addOperator('-')} className={`${btnStyle} bg-orange-400 text-white hover:bg-orange-500`}>-</button>
+                    <button onClick={() => inputDigit('4')} className={`${btnStyle} bg-gray-200`}>4</button>
+                    <button onClick={() => inputDigit('5')} className={`${btnStyle} bg-gray-200`}>5</button>
+                    <button onClick={() => inputDigit('6')} className={`${btnStyle} bg-gray-200`}>6</button>
+                    <button onClick={() => addOperator('-')} className={`${btnStyle} bg-orange-400 text-white`}>-</button>
                     {/* Fila 4 */}
-                    <button onClick={() => inputDigit('1')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>1</button>
-                    <button onClick={() => inputDigit('2')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>2</button>
-                    <button onClick={() => inputDigit('3')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>3</button>
-                    <button onClick={() => addOperator('+')} className={`${btnStyle} bg-orange-400 text-white hover:bg-orange-500`}>+</button>
+                    <button onClick={() => inputDigit('1')} className={`${btnStyle} bg-gray-200`}>1</button>
+                    <button onClick={() => inputDigit('2')} className={`${btnStyle} bg-gray-200`}>2</button>
+                    <button onClick={() => inputDigit('3')} className={`${btnStyle} bg-gray-200`}>3</button>
+                    <button onClick={() => addOperator('+')} className={`${btnStyle} bg-orange-400 text-white`}>+</button>
                     {/* Fila 5 */}
-                    <button onClick={() => inputDigit('0')} className={`${btnStyle} col-span-2 bg-slate-200 hover:bg-slate-300 text-slate-800`}>0</button>
-                    <button onClick={() => inputDigit('.')} className={`${btnStyle} bg-slate-200 hover:bg-slate-300 text-slate-800`}>.</button>
-                    <button onClick={calculeResult} className={`${btnStyle} bg-indigo-600 text-white hover:bg-indigo-700`}>=</button>
+                    <button onClick={() => inputDigit('0')} className={`${btnStyle} col-span-2 bg-gray-200`}>0</button>
+                    <button onClick={() => inputDigit('.')} className={`${btnStyle} bg-gray-200`}>.</button>
+                    <button onClick={calculeResult} className={`${btnStyle} bg-blue-600 text-white`}>=</button>
                 </div>
             </div>
             {/* BOTÓN REGRESAR */}
             <button
                 onClick={onReturn}
-                className="mt-8 px-6 py-2 bg-slate-800 text-white rounded-full hover:bg-slate-700 transition-colors shadow-md"
+                className="mt-6 px-6 py-2 bg-gray-800 text-white rounded"
             >
                 ← Back to Home
             </button>
