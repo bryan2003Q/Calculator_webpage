@@ -1,4 +1,4 @@
-
+import { Button } from "../atoms/Button";
 
 function CharacterDetail({ character, onBack }) {
     if (!character) return null;
@@ -55,15 +55,15 @@ function CharacterDetail({ character, onBack }) {
                 </div>
             </div>
 
-            <button
+            <Button
                 onClick={onBack}
-                className="mt-6 px-6 py-2 bg-gray-800 text-white font-bold rounded"
+                className="mt-6 px-6 py-2"
+                variant="secondary"
             >
                 ← Back to Gallery
-            </button>
+            </Button>
         </div>
     );
 }
 
 export default CharacterDetail;
-

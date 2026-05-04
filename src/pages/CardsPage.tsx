@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import CharacterDetail from "./CharacterDetail.tsx";
-import CharacterCard from "./CharacterCard.tsx";
+import CharacterDetail from "../components/organisms/CharacterDetail";
+import CharacterCard from "../components/molecules/CharacterCard";
+import { SearchBar } from "../components/molecules/SearchBar";
+import { generateUniqueId } from "../utils/generateId";
+import { Button } from "../components/atoms/Button";
 
-function Cards({ onReturn }) {
+function CardsPage({ onReturn }: any) {
     const [characters, setCharacters] = useState([]);
     const [query, setQuery] = useState("");
     const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -16,7 +19,12 @@ function Cards({ onReturn }) {
             .then((response) => response.json())
             .then((data) => {
                 if (data.results) {
-                    setCharacters(data.results);
+                    // Generate our custom id instead of relying on the api's ID for safety
+                    const resultsWithCustomIds = data.results.map((char: any) => ({
+                        ...char,
+                        customId: generateUniqueId()
+                    }));
+                    setCharacters(resultsWithCustomIds);
                 } else {
                     setCharacters([]);
                 }
@@ -47,42 +55,29 @@ function Cards({ onReturn }) {
         <div className="p-4">
             <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">Characters of Rick and Morty</h2>
 
-            <div className="relative w-full max-w-md mx-auto mb-8">
-                <input
-                    className="w-full bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-xl pl-4 pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-slate-300 shadow-sm focus:shadow-md"
-                    type="text"
-                    placeholder="Research character..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-                <button
-                    className="absolute right-1.5 top-1.5 bottom-1.5 px-5 flex items-center rounded-lg bg-slate-900 text-sm font-semibold text-white transition-all hover:bg-slate-800 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
-                    onClick={handleSearch}
-                >
-                    Search
-                </button>
-            </div>
-
+            <SearchBar query={query} setQuery={setQuery} onSearch={handleSearch} />
 
             <div className="max-w-[1800px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-2 sm:px-4">
-                {characters.map((character) => (
+                {characters.map((character: any) => (
                     <CharacterCard
-                        key={character.id}
+                        key={character.customId}
                         character={character}
                         onMoreInfo={setSelectedCharacter}
                     />
                 ))}
             </div>
+            
             <div className="flex justify-center mt-12 mb-6">
-                <button
+                <Button
                     onClick={onReturn}
-                    className="mt-8 px-6 py-2 bg-slate-800 text-white rounded-full hover:bg-slate-700 transition-colors shadow-md"
+                    className="mt-8 px-6 py-2 rounded-full"
+                    variant="secondary"
                 >
                     Back to Home
-                </button>
+                </Button>
             </div>
         </div>
     );
 }
 
-export default Cards;
+export default CardsPage;
