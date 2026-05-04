@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Home from "./Home";
-//import Calculator from "./Calculator";
+import Calculator from "./Calculator";
 //import Cards from "./Cards";
 
 function App() {
