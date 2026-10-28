@@ -45,7 +45,7 @@ function Cards({ onReturn }) {
 
     return (
         <div className="p-4">
-            <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">Characters of Rick and Morty</h2>
+            <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">Characters of Rick and Morty Series</h2>
 
             <div className="relative w-full max-w-md mx-auto mb-8">
                 <input
